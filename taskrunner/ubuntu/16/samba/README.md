@@ -8,7 +8,7 @@ It's very easy to configure Samba Task runner. Change your username to root.
 
 ```apt install git```
 
-```git clone https://github.com/Venneto/process.git "/usr/src"```
+```git clone https://github.com/Venneto/process.git "/usr/src/process"```
 
 ```chown -R root:root /usr/src/process/taskrunner/ubuntu/16/samba```
 
