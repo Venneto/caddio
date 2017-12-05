@@ -4,16 +4,18 @@ It's very easy to configure Samba Task runner. Change your username to root.
 
 ```sudo su```
 
-```cd /usr/src```
+```apt update && apt upgrade -y```
 
-```git clone https://github.com/Venneto/process.git```
+```apt install git```
 
-```chown -R root:root "/usr/src/process/taskrunner/ubuntu/16/samba"```
+```git clone https://github.com/Venneto/process.git "/usr/src"```
 
-```chmod -R 750 "/usr/src/process/taskrunner/ubuntu/16/samba"```
+```chown -R root:root /usr/src/process/taskrunner/ubuntu/16/samba```
+
+```chmod -R 750 /usr/src/process/taskrunner/ubuntu/16/samba```
 
 ```find /usr/src/process/taskrunner/ubuntu/16/samba/ -type f -iname "*.sh" -exec chmod +x {} \;```
 
-```ln -s "/usr/src/process/taskrunner/ubuntu/16/samba/samba.sh" /sbin```
+```ln -s /usr/src/process/taskrunner/ubuntu/16/samba/samba.sh /sbin```
 
 ```samba.sh```
