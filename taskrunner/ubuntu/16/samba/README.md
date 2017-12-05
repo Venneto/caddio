@@ -12,7 +12,7 @@ It's very easy to configure Samba Task runner. Change your username to root.
 
 ```chmod -R 750 "/usr/src/process/taskrunner/ubuntu/16/samba"```
 
-```chmod +x "/usr/src/process/taskrunner/ubuntu/16/samba/*.sh"```
+```find /usr/src/process/taskrunner/ubuntu/16/samba/ -type f -iname "*.sh" -exec chmod +x {} \;```
 
 ```ln -s "/usr/src/process/taskrunner/ubuntu/16/samba/samba.sh" /sbin```
 
