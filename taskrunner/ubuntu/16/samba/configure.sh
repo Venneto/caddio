@@ -9,6 +9,8 @@
 
 sudo su
 
+cp -rfvp /home/$USER/process /usr/src
+
 chown -R root:root /usr/src/process/taskrunner/ubuntu/16/samba
 
 chmod -R 750 /usr/src/process/taskrunner/ubuntu/16/samba
