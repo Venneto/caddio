@@ -6,6 +6,8 @@
 
 # Samba menu options - Option number [5] on main menu
 
+localpath="/usr/src/process/taskrunner/ubuntu/16/samba"
+
 sambamenu() {
 
 	clear
@@ -27,31 +29,31 @@ sambamenu() {
 	while [[ "$sambaoption" != "0" ]]
 	do
 		if [[ "$sambaoption" == "1" ]]; then
-			source $(dirname "$0")/install.sh
+			source $localpath/install.sh
 			sambarepo
 		fi		
 		if [[ "$sambaoption" == "2" ]]; then
-			source $(dirname "$0")/install.sh
+			source $localpath/install.sh
 			sambasource
 		fi
 		if [[ "$sambaoption" == "3" ]]; then
-			source $(dirname "$0")/install.sh
+			source $localpath/install.sh
 			sharedfolder
 		fi
 		if [[ "$sambaoption" == "4" ]]; then
-			source $(dirname "$0")/install.sh
+			source $localpath/install.sh
 			basictests
 		fi
 		if [[ "$sambaoption" == "5" ]]; then
-			source $(dirname "$0")/backup.sh
+			source $localpath/backup.sh
 			backupsamba
 		fi
 		if [[ "$sambaoption" == "6" ]]; then
-			source $(dirname "$0")/restore.sh
+			source $localpath/restore.sh
 			restoresamba
 		fi
 		if [[ "$sambaoption" == "7" ]]; then
-			source $(dirname "$0")/remove.sh
+			source $localpath/remove.sh
 			removesamba
 		fi
 		sambamenu
@@ -85,19 +87,19 @@ mainmenu() {
 while [[ "$menuoption" != "0" ]]
 do
     if [[ "$menuoption" == "1" ]]; then
-    	source $(dirname "$0")/locale.sh
+    	source $localpath/locale.sh
     	fixlocale
     fi	
     if [[ "$menuoption" == "2" ]]; then
-    	source $(dirname "$0")/network.sh
+    	source $localpath/network.sh
     	network
     fi	
     if [[ "$menuoption" == "3" ]]; then
-    	source $(dirname "$0")/diskquota.sh
+    	source $localpath/diskquota.sh
     	aclquota
     fi	
     if [[ "$menuoption" == "4" ]]; then
-    	source $(dirname "$0")/ntp.sh
+    	source $localpath/ntp.sh
         installntp
     fi    
     if [[ "$menuoption" == "5" ]]; then
