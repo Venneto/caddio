@@ -58,7 +58,7 @@ sambasource() {
 
 # Create all shared folders
 
-sharedfolder() {}
+# sharedfolder() {}
 
 # Run some basic test against Samba4 AD DC
 
