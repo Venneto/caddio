@@ -66,44 +66,59 @@ basictests() {
 
 	# Verify Network settings
 
+	clear
 	cat /etc/network/interfaces
 	read -p "Press ENTER to continue..."
+	clear
 	cat /etc/resolv.conf
 	read -p "Press ENTER to continue..."
+	clear
 	cat /etc/hosts
 	read -p "Press ENTER to continue..."
+	clear
 	cat /etc/hostname
 	read -p "Press ENTER to continue..."
 
 	# Test Domain Level
 
+	clear
 	samba-tool domain level show
 	read -p "Press ENTER to continue..."
 
 	# Test DNS resolution
 
+	clear
 	ping -c3 etmn.local
 	read -p "Press ENTER to continue..."
+	clear
 	ping -c3 etmnmaster.etmn.local
 	read -p "Press ENTER to continue..."
+	clear
 	ping -c3 etmnmaster
 	read -p "Press ENTER to continue..."
+	clear
 	host -t A etmn.local
 	read -p "Press ENTER to continue..."
+	clear
 	host -t A etmnmaster.etmn.local
 	read -p "Press ENTER to continue..."
+	clear
 	host -t SRV _kerberos._udp.etmn.local
 	read -p "Press ENTER to continue..."
+	clear
 	host -t SRV _ldap._tcp.etmn.local
 	read -p "Press ENTER to continue..."
+	clear
 	kinit administrator@ETMN.LOCAL
 	klist
 	read -p "Press ENTER to continue..."
+	clear
 	ntpdate -du etmnmaster.etmn.local
 	read -p "Press ENTER to continue..."
 
 	# Test SMB
 
+	clear
 	smbclient -L localhost -U%
 	read -p "Press ENTER to continue..."
 	
