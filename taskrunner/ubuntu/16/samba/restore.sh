@@ -7,26 +7,26 @@
 USERPROFILE=$USER
 BACKUPFROM="/home/$USERPROFILE/samba/backups"
 
-sudo systemctl stop samba-ad-dc.service
+systemctl stop samba-ad-dc.service
 
-sudo cp -rfvp $BACKUPFROM/smb.conf /etc/samba
+cp -rfvp $BACKUPFROM/smb.conf /etc/samba
 
-sudo cp -rfvp $BACKUPFROM/samba /var/lib
+cp -rfvp $BACKUPFROM/samba /var/lib
 
-sudo cp -rfvp $BACKUPFROM/krb5.conf /etc/krb5.conf
+cp -rfvp $BACKUPFROM/krb5.conf /etc/krb5.conf
 
-sudo cp -rfvp $BACKUPFROM/passwd /etc/passwd 
+cp -rfvp $BACKUPFROM/passwd /etc/passwd 
 
-sudo cp -rfvp $BACKUPFROM/group /etc/group 
+cp -rfvp $BACKUPFROM/group /etc/group 
 
-sudo cp -rfvp $BACKUPFROM/shadow /etc/shadow
+cp -rfvp $BACKUPFROM/shadow /etc/shadow
 
-sudo cp -rfvp $BACKUPFROM/interfaces /etc/network/interfaces
+cp -rfvp $BACKUPFROM/interfaces /etc/network/interfaces
 
-sudo cp -rfvp $BACKUPFROM/resolv.conf /etc/resolv.conf
+cp -rfvp $BACKUPFROM/resolv.conf /etc/resolv.conf
 
-sudo cp -rfvp $BACKUPFROM/hostname /etc/hostname
+cp -rfvp $BACKUPFROM/hostname /etc/hostname
 
-sudo cp -rfvp $BACKUPFROM/hosts /etc/hosts
+cp -rfvp $BACKUPFROM/hosts /etc/hosts
 
-sudo systemctl start samba-ad-dc.service
+systemctl start samba-ad-dc.service

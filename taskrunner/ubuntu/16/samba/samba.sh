@@ -4,109 +4,78 @@
 # Date: 2017-12-03
 # Description: Core file - All functions and Menus.
 
-# Samba menu options - Option number [5] on main menu
+samba_menu() {
 
-localpath="/usr/src/process/taskrunner/ubuntu/16/samba"
+   localpath=$(dirname -- "$(readlink -f -- "$BASH_SOURCE")")  
+   
+   option=0
+   until [ "$option" = "M" ]; 
+   do
+      clear 
+      echo "  [1] Install Samba4 (From repository)"
+      echo "  [2] Install Samba4 (From source)"
+      echo "  [3] Run Basic tests"
+      echo "  [4] Backup Samba4 files"
+      echo "  [5] Restore Samba4 files"
+      echo "  [6] Remove Samba4"
+      echo "  [M] Return to Main Menu"
 
-sambamenu() {
-
-	clear
-	echo "-------------------------------------------------"
-	echo "                 Samba4 Tasks                    "
-	echo "-------------------------------------------------"
-	echo "[1] Install Samba4 (From repository)"
-	echo "[2] Install Samba4 (From source)"
-	echo "[4] Run basic tests"
-	echo "[5] Backup Samba4 files"
-	echo "[6] Restore Samba4 files"
-	echo "[7] Remove Samba4"
-	echo "[0] Return to Main Menu"
-	echo "-------------------------------------------------"
-
-	read -p "Please select a number [0-7]: " sambaoption
-	return $sambaoption
-
-	while [[ "$sambaoption" != "0" ]]
-	do
-		if [[ "$sambaoption" == "1" ]]; then
-			source $localpath/install.sh
-			sambarepo
-		fi		
-		if [[ "$sambaoption" == "2" ]]; then
-			source $localpath/install.sh
-			sambasource
-		fi
-		if [[ "$sambaoption" == "3" ]]; then
-			source $localpath/install.sh
-			sharedfolder
-		fi
-		if [[ "$sambaoption" == "4" ]]; then
-			source $localpath/install.sh
-			basictests
-		fi
-		if [[ "$sambaoption" == "5" ]]; then
-			source $localpath/backup.sh
-			backupsamba
-		fi
-		if [[ "$sambaoption" == "6" ]]; then
-			source $localpath/restore.sh
-			restoresamba
-		fi
-		if [[ "$sambaoption" == "7" ]]; then
-			source $localpath/remove.sh
-			removesamba
-		fi
-		sambamenu
-		sambaoption=$?
-	done
-
-	exit 0;
-
+      echo -n "Please Select a Number [1-6] or [M] to Main Menu: "
+      read option
+      echo ""
+   
+      case $option in
+         1 ) source $localpath/install.sh;
+            sambarepo;;
+         2 ) source $localpath/install.sh;
+            sambasource;;
+         3 ) source $localpath/install.sh;
+            basictests;;
+         4 ) source $localpath/backup.sh;
+            backupsamba;;
+         5 ) source $localpath/restore.sh;
+            restoresamba;;
+         6 ) source $localpath/remove.sh;
+            removesamba;;
+         [mM]* ) main_menu;;
+         * ) tput setf m;echo "Please enter [1-6] or [M]";tput setf m; 
+      esac
+   done
 }
 
-# Main menu options - First menu to show up
+main_menu() {
 
-mainmenu() {
+   localpath=$(dirname -- "$(readlink -f -- "$BASH_SOURCE")")
 
-	clear
-	echo "-------------------------------------------------"
-	echo "                Samba Task Runner                "
-	echo "-------------------------------------------------"
-	echo "[1] Fix Locale"
-	echo "[2] Configure Network"
-	echo "[3] Activate ACL & Quota at /home"
-	echo "[4] Install NTP"
-	echo "[5] Samba4 Tasks"
-	echo "[0] Exit"
-	echo "-------------------------------------------------"
+   option=0
+   until [ "$option" = "q" ]; 
+   do
+      clear
+      echo "  [1] Fix Locale"
+      echo "  [2] Configure Network"
+      echo "  [3] Configure ACL & Quota at /home"
+      echo "  [4] Install NTP"
+      echo "  [5] Samba Options"
+      echo "  [Q] Exit"
 
-	read -p "Please Select a Number [0-5]: " menuoption
-	return $menuoption
+      echo -n "Please Select a Number [1-5] or [Q] to Exit: "
+      read option
+      echo ""
+
+      case $option in
+         1 ) source $localpath/locale.sh;
+               fixlocale;;
+            2 ) source $localpath/network.sh;
+               networksettings;;
+            3 ) source $localpath/diskquota.sh;
+               aclquota;;
+            4 ) source $localpath/ntp.sh;
+               installntp;;
+            5 ) samba_menu;;
+            [qQ]* ) exit;;
+            * ) tput setf q;echo "Please enter 1, 2, 3, 5 or Q";tput setf q;
+      esac
+   done
 }
 
-while [[ "$menuoption" != "0" ]]
-do
-    if [[ "$menuoption" == "1" ]]; then
-    	source $localpath/locale.sh
-    	fixlocale
-    fi	
-    if [[ "$menuoption" == "2" ]]; then
-    	source $localpath/network.sh
-    	network
-    fi	
-    if [[ "$menuoption" == "3" ]]; then
-    	source $localpath/diskquota.sh
-    	aclquota
-    fi	
-    if [[ "$menuoption" == "4" ]]; then
-    	source $localpath/ntp.sh
-        installntp
-    fi    
-    if [[ "$menuoption" == "5" ]]; then
-    	sambamenu    
-    fi
-    mainmenu
-    menuoption=$?
-done
-
-exit 0;
+main_menu

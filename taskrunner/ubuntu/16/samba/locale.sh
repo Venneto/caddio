@@ -9,5 +9,5 @@
 fixlocale() {
 
 	dpkg-reconfigure locales
-
+	
 }
