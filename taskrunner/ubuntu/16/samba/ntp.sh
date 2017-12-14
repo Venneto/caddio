@@ -44,7 +44,6 @@ installntp() {
 	systemctl stop ntp.service
 	ntpdate -b a.ntp.br
 	systemctl start ntp.service
-	systemctl status ntp.service
 	read -p "Press ENTER to continue..."
 
 }

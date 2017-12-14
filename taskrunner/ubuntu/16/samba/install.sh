@@ -12,11 +12,11 @@ sambarepo() {
 	systemctl stop samba-ad-dc.service smbd.service nmbd.service winbind.service
 	systemctl disable samba-ad-dc.service smbd.service nmbd.service winbind.service
 	mv /etc/samba/smb.conf /etc/samba/smb.conf.orig
+	clear
 	samba-tool domain provision --use-rfc2307 --interactive
 	mv /etc/krb5.conf /etc/krb5.conf.orig
 	ln -s /var/lib/samba/private/krb5.conf /etc/
 	systemctl start samba-ad-dc.service
-	systemctl status samba-ad-dc.service
 	systemctl enable samba-ad-dc.service
 	netstat -tulpn | egrep 'smbd|samba'
 	
@@ -32,17 +32,7 @@ sambasource() {
 
 	# Install Samba Operating System Requirements
 
-	apt install autoconf bison build-essential debhelper \
-	dnsutils docbook-xml docbook-xsl flex gdb krb5-devel \
-	krb5-user krb5-server libacl1-dev libaio-dev \
-	libattr1-dev libblkid-dev libbsd-dev libcap-dev \
-	ibcups2-dev libgnutls-dev libjson-perl \
-	libldap2-dev libncurses5-dev libpam0g-dev \
-	libparse-yapp-perl libpopt-dev libreadline-dev \
-	perl perl-modules pkg-config python-all-dev \
-	python-dev python-dnspython python-crypto xsltproc \
-	zlib1g-dev libsystemd-dev libgpgme11-dev python-gpgme \
-	python-m2crypto blkid jansson-devel
+	apt install -y autoconf bison build-essential debhelper dnsutils docbook-xml docbook-xsl flex gdb krb5-user libacl1-dev libaio-dev libattr1-dev libblkid-dev libbsd-dev libcap-dev libgnutls-dev libjson-perl libldap2-dev libncurses5-dev libpam0g-dev libparse-yapp-perl libpopt-dev libreadline-dev perl perl-modules pkg-config python-all-dev python-dev python-dnspython python-crypto xsltproc zlib1g-dev libsystemd-dev libgpgme11-dev python-gpgme python-m2crypto libjansson-dev
 
 	# Download Samba source code
 
