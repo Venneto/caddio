@@ -142,7 +142,7 @@ Sugestão para a estrutura do disco rígido:
 
 ```sudo apt install ntpdate -y```
 
-```ntpdate -qu etmnmaster```
+```ntpdate -qu hostname```
 
 ```sudo systemctl stop ntp.service```
 
@@ -192,7 +192,7 @@ Sugestão para a estrutura do disco rígido:
 
 ```sudo chmod 0777 /home/nomedousuario/share/trash```
 
-```sudo chown admin_etmn:alunos /home/nomedousuario/share/pasta/de/arquivos```
+```sudo chown admin_local:nomedogrupo /home/nomedousuario/share/pasta/de/arquivos```
 
 ```sudo chown nomedousuario:nomedousuario /home/nomedousuario/share/trash```
 
