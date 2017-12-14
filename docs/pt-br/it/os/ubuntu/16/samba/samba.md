@@ -182,10 +182,6 @@ Sugestão para a estrutura do disco rígido:
 
 ```sudo addgroup nomedogrupo```
 
-```sudo addgroup professores```
-
-```sudo addgroup vendas```
-
 ```cat /proc/fs/ext4/sda1/options | grep xattr```
 
 ```mkdir -p /home/nomedousuario/share/pasta/de/arquivos```
